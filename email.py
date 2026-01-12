@@ -51,7 +51,7 @@ email ['is_corporate'] = is_corporate
 
 
 #9 Соберите «чистый» текст сообщения
-clean_body = email["body"].replace("\\t", " ").replace("\\n", " ").strip()
+clean_body = email["body"].replace("\t", " ").replace("\n", " ")
 email["clean_body"] = clean_body
 
 
@@ -69,8 +69,8 @@ pages = (len(sent_text) + 499) // 500
 
 
 #12 Проверьте пустоту темы и тела письма
-is_subject_empty = not bool(email["subject"])
-is_body_empty = not bool(email["body"])
+is_subject_empty = not email["subject"].strip()
+is_body_empty = not email["body"].strip()
 
 
 #13 Создайте «маску» e-mail отправителя
